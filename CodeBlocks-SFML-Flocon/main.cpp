@@ -5,25 +5,26 @@
 
 int main()
 {
+
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
     // Load a sprite to display
     sf::Texture texture;
-    if (!texture.loadFromFile("./Ressources/cute_image.jpg"))
+    if (!texture.loadFromFile("../Ressources/cute_image.jpg"))
         return EXIT_FAILURE;
     sf::Sprite sprite(texture);
     // Create a graphical text to display
     sf::Font font;
-    if (!font.loadFromFile("./Ressources/arial.ttf"))
+    if (!font.loadFromFile("../Ressources/arial.ttf"))
         return EXIT_FAILURE;
     sf::Text text("Hello SFML", font, 50);
     // Load a music to play
     sf::Music music;
-    if (!music.openFromFile("./Ressources/nice_music.ogg"))
+    if (!music.openFromFile("../Ressources/nice_music.ogg"))
         return EXIT_FAILURE;
     // Play the music
     music.play();
-    
+
     // Start the game loop
     while (window.isOpen())
     {
