@@ -2,3 +2,5 @@
 *.o
 
 sfml-app
+
+main
