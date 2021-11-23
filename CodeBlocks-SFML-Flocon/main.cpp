@@ -3,10 +3,49 @@
 #include <iostream>
 #include <string>
 #include <list>
+#include <stack>
 #include "Ligne.h"
+
+
+
+void generationRecursive(Point A, Point B, int niveau, sf::RenderWindow& window)
+{
+
+    if(niveau == 0)
+    {
+
+        sf::Vertex line2[] =
+            {
+            sf::Vertex(sf::Vector2f(A.getX(), A.getY())),
+            sf::Vertex(sf::Vector2f(B.getX(), B.getY()))
+            };
+       // window.draw(line2, 2, sf::Lines);
+    }else{
+
+    Ligne ligne(A, B);
+    Point C, D, E;
+    ligne.calculerPoints();
+    C = ligne.getPointC();
+    D = ligne.getPointD();
+    E = ligne.getPointE();
+
+    generationRecursive(A, C, niveau - 1, window);
+    generationRecursive(C, E, niveau - 1, window);
+    generationRecursive(E, D, niveau - 1, window);
+    generationRecursive(D, B, niveau - 1, window);
+
+    }
+
+}
+
+
+
+
 
 int main()
 {
+
+    std::list<Ligne*> mesLignes;
 
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
@@ -16,6 +55,12 @@ int main()
         return EXIT_FAILURE;
     // Play the music
     music.play();
+
+
+    //Initialisation
+    Point A(100.f,100.f);
+    Point B(200.f,200.f);
+
 
     // Start the game loop
     while (window.isOpen())
@@ -39,12 +84,12 @@ int main()
             sf::Vertex(sf::Vector2f(150.f, 150.f))
             };
 
-        window.draw(line, 2, sf::Lines);
+        //window.draw(line, 2, sf::Lines);
 
-        Point A(10,10);
-        Point B(10, 100);
 
-        Ligne L(A, B);
+        //Graphe Manuelle
+
+    /*    Ligne L(A, B);
 
         Point Aprime = L.getPointA();
         Point Bprime = L.getPointB();
@@ -60,9 +105,46 @@ int main()
             sf::Vertex(sf::Vector2f(truc3, truc4))
             };
 
-        window.draw(line2, 2, sf::Lines);
+        window.draw(line2, 2, sf::Lines);*/
+
+        //std::list<sf::VertexArray> lignesliste;
+        //std::list<sf::VertexArray>::iterator iterateur;
+
+        std::stack<sf::VertexArray> lignesliste;
 
 
+        sf::VertexArray lignes(sf::Lines, 2);
+        lignes[0].position = sf::Vector2f(A.getX(), A.getY());
+        lignes[1].position = sf::Vector2f(B.getX(), B.getY());
+
+        sf::VertexArray lignes2(sf::Lines, 2);
+        lignes2[0].position = sf::Vector2f(200.f, 88.f);
+        lignes2[1].position = sf::Vector2f(678.f , 189.f);
+
+        //window.draw(lignes);
+       // window.draw(lignes2);
+
+        lignesliste.push(lignes);
+        lignesliste.push(lignes2);
+
+
+        while (!lignesliste.empty())
+        {
+
+            window.draw(lignesliste.top());
+            lignesliste.pop();
+        }
+
+
+         //window.draw(lignes);
+
+
+
+
+
+
+
+       // generationRecursive(A, B, 2, window);
 
 
         // Update the window

@@ -5,7 +5,7 @@ Point::Point()
 
 }
 
-Point::Point(double x, double y)
+Point::Point(float x, float y)
 {
     _x = x;
     _y = y;
@@ -16,12 +16,22 @@ Point::~Point()
     //dtor
 }
 
-double Point::getX()
+float Point::getX()
 {
     return _x;
 }
 
-double Point::getY()
+float Point::getY()
 {
     return _y;
+}
+
+void Point::setX(float x)
+{
+    _x = x;
+}
+
+void Point::setY(float y)
+{
+    _y = y;
 }
