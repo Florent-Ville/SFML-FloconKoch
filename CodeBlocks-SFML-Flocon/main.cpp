@@ -8,18 +8,16 @@
 
 
 
-void generationRecursive(Point A, Point B, int niveau, sf::RenderWindow& window)
+void generationRecursive(Point A, Point B, int niveau, std::stack<sf::VertexArray>& pileListe)
 {
 
     if(niveau == 0)
     {
+        sf::VertexArray lignes(sf::Lines, 2);
+        lignes[0].position = sf::Vector2f(A.getX(), A.getY());
+        lignes[1].position = sf::Vector2f(B.getX(), B.getY());
+        pileListe.push(lignes);
 
-        sf::Vertex line2[] =
-            {
-            sf::Vertex(sf::Vector2f(A.getX(), A.getY())),
-            sf::Vertex(sf::Vector2f(B.getX(), B.getY()))
-            };
-       // window.draw(line2, 2, sf::Lines);
     }else{
 
     Ligne ligne(A, B);
@@ -29,10 +27,10 @@ void generationRecursive(Point A, Point B, int niveau, sf::RenderWindow& window)
     D = ligne.getPointD();
     E = ligne.getPointE();
 
-    generationRecursive(A, C, niveau - 1, window);
-    generationRecursive(C, E, niveau - 1, window);
-    generationRecursive(E, D, niveau - 1, window);
-    generationRecursive(D, B, niveau - 1, window);
+    generationRecursive(A, C, niveau - 1, pileListe);
+    generationRecursive(C, E, niveau - 1, pileListe);
+    generationRecursive(E, D, niveau - 1, pileListe);
+    generationRecursive(D, B, niveau - 1, pileListe);
 
     }
 
@@ -58,8 +56,8 @@ int main()
 
 
     //Initialisation
-    Point A(100.f,100.f);
-    Point B(200.f,200.f);
+    Point A(100.f,200.f);
+    Point B(300.f,200.f);
 
 
     // Start the game loop
@@ -124,7 +122,7 @@ int main()
         //window.draw(lignes);
        // window.draw(lignes2);
 
-        lignesliste.push(lignes);
+  /*      lignesliste.push(lignes);
         lignesliste.push(lignes2);
 
 
@@ -133,7 +131,7 @@ int main()
 
             window.draw(lignesliste.top());
             lignesliste.pop();
-        }
+        } */
 
 
          //window.draw(lignes);
@@ -144,7 +142,14 @@ int main()
 
 
 
-       // generationRecursive(A, B, 2, window);
+        generationRecursive(A, B, 2, lignesliste);
+
+        while (!lignesliste.empty())
+        {
+
+            window.draw(lignesliste.top());
+            lignesliste.pop();
+        }
 
 
         // Update the window
