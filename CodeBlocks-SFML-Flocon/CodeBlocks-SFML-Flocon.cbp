@@ -13,7 +13,14 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
+				<Linker>
+					<Add library="sfml-system" />
+					<Add library="sfml-window" />
+					<Add library="sfml-graphics" />
+					<Add library="sfml-audio" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/CodeBlocks-SFML-Flocon" prefix_auto="1" extension_auto="1" />
@@ -22,6 +29,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -32,7 +40,9 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="include/Ligne.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/Ligne.cpp" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

@@ -1,12 +1,16 @@
 # depslib dependency file v1.0
-1637621554 source:/home/zeus/SFML/SFML-FloconKoch/CodeBlocks-SFML-Flocon/main.cpp
+1637689814 source:/home/zeus/SFML/SFML-FloconKoch/CodeBlocks-SFML-Flocon/main.cpp
 	<SFML/Audio.hpp>
 	<SFML/Graphics.hpp>
 	<iostream>
 	<string>
-
-1637621383 source:/home/zeus/SFML/SFML-FloconKoch/CodeBlocks-SFML-Flocon/src/Ligne.cpp
+	<list>
 	"Ligne.h"
+
+1637690723 source:/home/zeus/SFML/SFML-FloconKoch/CodeBlocks-SFML-Flocon/src/Ligne.cpp
+	"Ligne.h"
+	"Point.h"
+	<SFML/Graphics.hpp>
 
 1637618427 /home/zeus/SFML/SFML-FloconKoch/CodeBlocks-SFML-Flocon/Ligne.h
 	<SFML/Audio.hpp>
@@ -14,5 +18,13 @@
 	<iostream>
 	<string>
 
-1637621383 /home/zeus/SFML/SFML-FloconKoch/CodeBlocks-SFML-Flocon/include/Ligne.h
+1637690723 /home/zeus/SFML/SFML-FloconKoch/CodeBlocks-SFML-Flocon/include/Ligne.h
+	<SFML/Audio.hpp>
+	<SFML/Graphics.hpp>
+	"Point.h"
+
+1637688969 /home/zeus/SFML/SFML-FloconKoch/CodeBlocks-SFML-Flocon/include/Point.h
+
+1637688993 source:/home/zeus/SFML/SFML-FloconKoch/CodeBlocks-SFML-Flocon/src/Point.cpp
+	"Point.h"
 

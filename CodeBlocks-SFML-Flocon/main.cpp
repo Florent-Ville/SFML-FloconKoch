@@ -2,22 +2,14 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <string>
+#include <list>
+#include "Ligne.h"
 
 int main()
 {
 
     // Create the main window
     sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
-    // Load a sprite to display
-    sf::Texture texture;
-    if (!texture.loadFromFile("../Ressources/cute_image.jpg"))
-        return EXIT_FAILURE;
-    sf::Sprite sprite(texture);
-    // Create a graphical text to display
-    sf::Font font;
-    if (!font.loadFromFile("../Ressources/arial.ttf"))
-        return EXIT_FAILURE;
-    sf::Text text("Hello SFML", font, 50);
     // Load a music to play
     sf::Music music;
     if (!music.openFromFile("../Ressources/nice_music.ogg"))
@@ -38,10 +30,41 @@ int main()
         }
         // Clear screen
         window.clear();
-        // Draw the sprite
-        window.draw(sprite);
-        // Draw the string
-        window.draw(text);
+
+
+        //Ligne de Test
+        sf::Vertex line[] =
+            {
+            sf::Vertex(sf::Vector2f(10.f, 10.f)),
+            sf::Vertex(sf::Vector2f(150.f, 150.f))
+            };
+
+        window.draw(line, 2, sf::Lines);
+
+        Point A(10,10);
+        Point B(10, 100);
+
+        Ligne L(A, B);
+
+        Point Aprime = L.getPointA();
+        Point Bprime = L.getPointB();
+
+        float truc = Aprime.getX();
+        float truc2 = Aprime.getY();
+        float truc3 = Bprime.getX();
+        float truc4 = Bprime.getY();
+
+        sf::Vertex line2[] =
+            {
+            sf::Vertex(sf::Vector2f(truc, truc2)),
+            sf::Vertex(sf::Vector2f(truc3, truc4))
+            };
+
+        window.draw(line2, 2, sf::Lines);
+
+
+
+
         // Update the window
         window.display();
     }
