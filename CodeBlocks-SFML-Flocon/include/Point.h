@@ -6,6 +6,7 @@ class Point
 {
     public:
         Point();
+        //Point(Point A, Point B);
         Point(float x, float y);
         virtual ~Point();
 

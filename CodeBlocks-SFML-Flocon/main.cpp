@@ -24,13 +24,31 @@ void generationRecursive(Point A, Point B, int niveau, std::stack<sf::VertexArra
     Point C, D, E;
     ligne.calculerPoints();
     C = ligne.getPointC();
+
+
+    std::cout << "C.x = " << C.getX();
+    std::cout << "C.y = " << C.getY();
+
+
     D = ligne.getPointD();
+
+    std::cout << "D.x = " << D.getX();
+    std::cout << "D.y = " << D.getY();
+
     E = ligne.getPointE();
 
-    generationRecursive(A, C, niveau - 1, pileListe);
+    std::cout << "E.x = " << E.getX();
+    std::cout << "E.y = " << E.getY() << std::endl;
+
+  /*  generationRecursive(A, C, niveau - 1, pileListe);
     generationRecursive(C, E, niveau - 1, pileListe);
     generationRecursive(E, D, niveau - 1, pileListe);
-    generationRecursive(D, B, niveau - 1, pileListe);
+    generationRecursive(D, B, niveau - 1, pileListe); */
+
+    generationRecursive(C, A, niveau - 1, pileListe);
+    generationRecursive(E, C, niveau - 1, pileListe);
+    generationRecursive(D, E, niveau - 1, pileListe);
+    generationRecursive(B, D, niveau - 1, pileListe);
 
     }
 
@@ -56,8 +74,8 @@ int main()
 
 
     //Initialisation
-    Point A(100.f,200.f);
-    Point B(300.f,200.f);
+    Point A(100.f,100.f);
+    Point B(500.f,100.f);
 
 
     // Start the game loop
@@ -142,7 +160,7 @@ int main()
 
 
 
-        generationRecursive(A, B, 2, lignesliste);
+        generationRecursive(A, B, 1, lignesliste);
 
         while (!lignesliste.empty())
         {

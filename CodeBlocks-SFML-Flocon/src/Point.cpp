@@ -5,6 +5,15 @@ Point::Point()
 
 }
 
+/*
+Point::Point(Point A, Point B)
+{
+    A.setX(B.getX());
+
+    A.setY(B.getY());
+
+} */
+
 Point::Point(float x, float y)
 {
     _x = x;
