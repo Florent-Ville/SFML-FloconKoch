@@ -54,7 +54,7 @@ int main()
     std::list<Ligne*> mesLignes;
 
     // Create the main window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML window");
+    sf::RenderWindow window(sf::VideoMode(800, 800), "SFML window");
     // Load a music to play
     sf::Music music;
     if (!music.openFromFile("../Ressources/nice_music.ogg"))
@@ -66,8 +66,7 @@ int main()
     //Initialisation
     Point A(100.f,300.f);
     Point B(600.f,300.f);
-
-    //Point C(50.f,70);
+    Point C(350.f,733.f);
 
 
 
@@ -90,17 +89,19 @@ int main()
         std::stack<sf::VertexArray> lignesliste;
 
 
-        int niveau = 3;
+        int niveau = 4;
 
-        generationRecursive(A, B, niveau, lignesliste);
-       // generationRecursive(B, C, niveau, lignesliste);
-       // generationRecursive(C, A, niveau, lignesliste);
 
-        while (!lignesliste.empty())
-        {
-            window.draw(lignesliste.top());
-            lignesliste.pop();
-        }
+            generationRecursive(A, B, niveau, lignesliste);
+            generationRecursive(B, C, niveau, lignesliste);
+            generationRecursive(C, A, niveau, lignesliste);
+
+            while (!lignesliste.empty())
+            {
+                window.draw(lignesliste.top());
+                lignesliste.pop();
+            }
+
 
 
         // Update the window
