@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include <list>
+#include <chrono>
+#include <thread>
 #include <stack>
 #include "Ligne.h"
 
@@ -90,7 +92,6 @@ int main()
 
 
         int niveau = 4;
-
 
             generationRecursive(A, B, niveau, lignesliste);
             generationRecursive(B, C, niveau, lignesliste);

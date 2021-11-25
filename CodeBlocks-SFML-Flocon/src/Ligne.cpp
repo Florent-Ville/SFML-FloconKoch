@@ -98,7 +98,7 @@ void Ligne::calculerPoints()
         float dX = _D.getX() - _C.getX();
         float dY = _D.getY() - _C.getY();
 
-        _E.setX((cos(SOIXANTE_DEGRES) * dX + sin(SOIXANTE_DEGRES) * dY) + _C.getX());
+        _E.setX((cos(SOIXANTE_DEGRES) * dX +sin(SOIXANTE_DEGRES) * dY) + _C.getX());
         _E.setY((-sin(SOIXANTE_DEGRES) * dX + cos(SOIXANTE_DEGRES) * dY) + _C.getY());
 
         //_E.setX(_C.getX() + distance/3*cos(angle + SOIXANTE_DEGRES));
